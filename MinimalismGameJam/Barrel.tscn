@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://barrel.png" type="Texture" id=1]
+[ext_resource path="res://Barrel.gd" type="Script" id=2]
+[ext_resource path="res://tv.png" type="Texture" id=3]
+[ext_resource path="res://cd2.png" type="Texture" id=4]
+[ext_resource path="res://trashbin.png" type="Texture" id=5]
+[ext_resource path="res://APfkB6p.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "tv",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "cd",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "trash",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "barrel",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 44.7155, 48.831 )
+
+[node name="RigidBody2D" type="RigidBody2D"]
+gravity_scale = 30.03
+can_sleep = false
+
+[node name="Barrel" type="KinematicBody2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="Barrel"]
+position = Vector2( 26.1434, -6.61459 )
+scale = Vector2( 0.170939, 0.170939 )
+texture = ExtResource( 6 )
+energy = 0.31
+range_z_min = -1032
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Barrel"]
+scale = Vector2( 8, 8 )
+frames = SubResource( 2 )
+animation = "trash"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrel"]
+shape = SubResource( 1 )

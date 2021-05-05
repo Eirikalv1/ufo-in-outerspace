@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://resize1.png" type="Texture" id=1]
+[ext_resource path="res://resize2.png" type="Texture" id=2]
+[ext_resource path="res://Reset walls.gd" type="Script" id=3]
+[ext_resource path="res://ResetWalls2.gd" type="Script" id=4]
+[ext_resource path="res://resize3.png" type="Texture" id=5]
+[ext_resource path="res://APfkB6p.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Reset walls" type="KinematicBody2D"]
+collision_layer = 0
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2( 4.87, 4.827 )
+z_index = 1
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 10, 10 )
+frames = SubResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+scale = Vector2( 0.170939, 0.170939 )
+texture = ExtResource( 6 )
+color = Color( 0.101961, 1, 0, 1 )
+energy = 0.69
+range_z_min = -1032
+range_layer_min = -100
+range_layer_max = 200
